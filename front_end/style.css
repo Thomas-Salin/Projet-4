@@ -1,0 +1,7 @@
+img .photo{
+    object-fit: contain;
+}
+
+div.description{
+    text-align: center;
+}
