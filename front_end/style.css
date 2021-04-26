@@ -5,3 +5,11 @@ img .photo{
 div.description{
     text-align: center;
 }
+
+p.prix{
+    font-weight: bold;
+}
+
+.nom{
+    font-size: 1.5em;
+}
