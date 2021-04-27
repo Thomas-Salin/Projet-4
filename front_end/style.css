@@ -13,3 +13,11 @@ p.prix{
 .nom{
     font-size: 1.5em;
 }
+
+strong.ref{
+    text-decoration: underline;
+}
+
+div.misepage{
+    padding : 10%;
+}
