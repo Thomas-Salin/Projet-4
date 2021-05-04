@@ -6,125 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Onorico - Accueil</title>
 </head>
 
-<body>
+<body onload="afficheProduit()">
 
-    <header class="container-fluid">
-        <div class="row bg-warning">
-            <nav class="col navbar bg-warning navbar-expand-md navbar-light">
-                <a href="index.html" class="nav-brand w-75"><img class="px-3" src="./images/logo.png" alt="logo_orinoco" height="80" ></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse bg-warning" id="navbarContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a href="index.html" class="nav-link text-dark px-5">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./html/panier.html" class="nav-link text-dark px-5">Panier</a>
-                        </li>
+    <main>
+
+        <header class="container-fluid">
+
+            <div class="row bg-warning">
+                <nav class="col navbar bg-warning navbar-expand-md navbar-light">
+                    <a href="index.html" class="nav-brand w-75"><img class="px-3" src="./images/logo.png" alt="logo_orinoco" height="80" ></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse bg-warning" id="navbarContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a href="index.html" class="nav-link text-dark px-5">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./html/panier.html" class="nav-link text-dark px-5">Panier</a>
+                            </li>
+                        </ul>
+                    </div>    
+                </nav>
+            </div>
+
+        </header>
+
+        <section class="container-fluid">
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h1>Ours en peluche</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid">
+
+            <div class="row" id="listeProduit">
+
+            </div>
+
+        <footer class="container-fluid">
+
+            <div class="row bg-warning py-5">
+                <div class="col bg-warning">
+                    <a href="index.html" class="w-50"><img class="px-3" src="./images/logo.png" alt="logo_orinoco" height="60"/></a>
+                </div>
+                <div class="col text-end align-self-center">
+                    <ul class="list-inline"></ul>
+                        <li class="list-inline-item"><a class="text-dark" href="#">Contact</a></li>
+                        <li class="list-inline-item px-3"><a class="text-dark" href="#">Conditions Générales</a></li>
                     </ul>
-                </div>    
-            </nav>
-        </div>      
-    </header>
-
-    <section class="container-fluid">
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h1>Ours en peluche</h1>
-            </div>
-        </div>
-    </section>
-
-    <section class="container-fluid">
-
-        <div class="row">
-            <div class="col-12 my-5">
-                <div class="card w-50 mx-auto">
-                    <a href="./html/fiche_produit.html" class="stretched-link"><img class="w-100 photo" src="images/teddy_1.jpg" alt="Peluche_Norbert"></a>
-                    <div class="card-body">
-                        <p> Nom : Norbert</p>
-                        <p> Prix : 2900 </p>
-                        <p> Description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    </div>
                 </div>
             </div>
 
+        </footer>
 
-        
-            <div class="col-12 my-5">
-                <div class="card w-50 mx-auto">
-                    <a href="./html/fiche_produit.html" class="stretched-link"><img class="w-100 photo" src="images/teddy_2.jpg" alt="Peluche_Arnold"></a>
-                    <div class="card-body">
-                        <p> Nom : Arnold</p>
-                        <p> Prix : 3900 </p>
-                        <p> Description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            <div class="col-12 my-5">
-                <div class="card w-50 mx-auto">
-                    <a href="./html/fiche_produit.html" class="stretched-link"><img class="w-100 photo" src="images/teddy_3.jpg" alt="Peluche_Lenny_et_Carl"></a>
-                    <div class="card-body">
-                        <p> Nom : Lenny et Carl</p>
-                        <p> Prix : 5900 </p>
-                        <p> Description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    </div>
-                </div>
-            </div>
-        
-
-        
-            <div class="col-12 my-5">
-                <div class="card w-50 mx-auto">
-                    <a href="./html/fiche_produit.html" class="stretched-link"><img class="w-100 photo" src="images/teddy_4.jpg" alt="Peluche_Gustav"></a>
-                    <div class="card-body">
-                        <p> Nom : Gustav</p>
-                        <p> Prix : 4500 </p>
-                        <p> Description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    </div>
-                </div>
-            </div>
-        
-
-        
-            <div class="col-12 my-5">
-                <div class="card w-50 mx-auto">
-                    <a href="./html/fiche_produit.html" class="stretched-link"><img class="w-100 photo" src="images/teddy_5.jpg" alt="Peluche_Garfunkel"></a>
-                    <div class="card-body">
-                        <p> Nom : Garfunkel</p>
-                        <p> Prix : 5500 </p>
-                        <p> Description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="container-fluid">
-        <div class="row bg-warning py-5">
-            <div class="col bg-warning">
-                <a href="index.html" class="w-50"><img class="px-3" src="./images/logo.png" alt="logo_orinoco" height="60"/></a>
-            </div>
-            <div class="col text-end align-self-center">
-                <ul class="list-inline"></ul>
-                    <li class="list-inline-item"><a class="text-dark" href="#">Contact</a></li>
-                    <li class="list-inline-item px-3"><a class="text-dark" href="#">Conditions Générales</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
+    </main>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 </html>
