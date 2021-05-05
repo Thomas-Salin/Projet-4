@@ -28,17 +28,35 @@ function afficheDetailProduit(){
         .then(response => response.json())
         .then(data2 => {
             document.getElementById('image').innerHTML += `<img class="w-100" id="image" src="${data2.imageUrl}" alt="Peluche_Norbert">`
-            document.getElementById('id').innerHTML += `<td id="id">${data2._id}</td>`
-            document.getElementById('name').innerHTML += `<td id="id">${data2.name}</td>`
-            document.getElementById('price').innerHTML += `<td id="id">${data2.price}€</td>`
-            document.getElementById('description').innerHTML += `<td id="id">${data2.description}</td>`
+            document.getElementById('produitPanier').innerHTML += `<td id="id">${data2._id}</td>`
+            document.getElementById('name').innerHTML += `<td id="name">${data2.name}</td>`
+            document.getElementById('price').innerHTML += `<td id="price">${data2.price}€</td>`
+            document.getElementById('description').innerHTML += `<td id="description">${data2.description}</td>`
             for (let choix = 0; choix < data2.colors.length; choix++) {
                 let element = data2.colors[choix];
                 document.getElementById("choix").innerHTML += `<option value="${element}" id="color">${element}</option>`       
             }               
         })
-
 }
+
+
+function ajoutProduitPanier() {
+    let nombrePanier = localStorage.length;
+    let url = window.location.href;
+    let tId = url.split("?");
+    let id = tId[1];
+    localStorage.setItem(`${nombrePanier}`, id);
+    window.alert("Le produit a été ajouté à votre panier");        
+}
+
+function affichePanier(){
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        console.log (key, localStorage.getItem(key))      
+       }
+      
+}
+
 
 
 
