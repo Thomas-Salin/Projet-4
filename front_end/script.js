@@ -20,6 +20,7 @@ function afficheProduit (){
     })
 }
 
+
 function afficheDetailProduit(){
     let url = window.location.href;
     let tId = url.split("?");
@@ -35,28 +36,50 @@ function afficheDetailProduit(){
             for (let choix = 0; choix < data2.colors.length; choix++) {
                 let element = data2.colors[choix];
                 document.getElementById("choix").innerHTML += `<option value="${element}" id="color">${element}</option>`       
-            }               
-        })
+            }      
+        })   
 }
 
 
 function ajoutProduitPanier() {
-    let nombrePanier = localStorage.length;
     let url = window.location.href;
     let tId = url.split("?");
     let id = tId[1];
-    localStorage.setItem(`${nombrePanier}`, id);
+    let quantite = localStorage.getItem(id);
+    quantite++;
+    console.log(quantite);
+    localStorage.setItem(id, quantite);
     window.alert("Le produit a été ajouté à votre panier");        
 }
 
 function affichePanier(){
+    let totalPanier = document.getElementById("prixTotal");
+    totalPanier.innerHTML = 0;
     for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        console.log (key, localStorage.getItem(key))      
-       }
-      
+        let idProduit = localStorage.key(i);
+        let quantite = localStorage.getItem(idProduit);
+        fetch(`http://localhost:3000/api/teddies/${idProduit}`)
+            .then(response3 => response3.json())
+            .then(data3 =>{
+                document.getElementById("listeProduitPanier").innerHTML += `
+                <tr>
+                    <td><strong class="ref">${quantite}</strong></td>
+                    <td>${data3.name}</td>
+                    <td>${quantite*data3.price}€</td>
+                    <td><button type="button" onclick="supprimePanier('${idProduit}')">Supprimer</button></td>
+                </tr>`
+                totalPanier.innerHTML = +totalPanier.innerHTML + quantite*data3.price
+            })
+        }
 }
 
+function supprimePanier(id){
+    localStorage.removeItem(id);
+    window.location.reload();
+    
+}
+
+fetch()
 
 
 
