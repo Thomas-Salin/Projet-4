@@ -21,3 +21,14 @@ strong.ref{
 div.misepage{
     padding : 10%;
 }
+
+
+input:invalid:hover{
+    border: 1px solid red;
+}
+
+input:valid:focus{
+    border: 1px solid green;
+}
+
+

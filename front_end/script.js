@@ -1,4 +1,4 @@
-function afficheProduit (){
+function affichageProduit (){
     fetch("http://localhost:3000/api/teddies")
     .then(response => response.json())
     .then(data => {
@@ -21,7 +21,7 @@ function afficheProduit (){
 }
 
 
-function afficheDetailProduit(){
+function affichageDetailProduit(){
     let url = window.location.href;
     let tId = url.split("?");
     let id = tId[1];
@@ -52,7 +52,7 @@ function ajoutProduitPanier() {
     window.alert("Le produit a été ajouté à votre panier");        
 }
 
-function affichePanier(){
+function affichagePanier(){
     let totalPanier = document.getElementById("prixTotal");
     totalPanier.innerHTML = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -63,23 +63,71 @@ function affichePanier(){
             .then(data3 =>{
                 document.getElementById("listeProduitPanier").innerHTML += `
                 <tr>
-                    <td><strong class="ref">${quantite}</strong></td>
+                    <td><strong class="ref" id="quantite">${quantite}</strong></td>
                     <td>${data3.name}</td>
                     <td>${quantite*data3.price}€</td>
-                    <td><button type="button" onclick="supprimePanier('${idProduit}')">Supprimer</button></td>
+                    <td><button type="button" onclick="suppressionPanier('${idProduit}')">Supprimer</button></td>
                 </tr>`
                 totalPanier.innerHTML = +totalPanier.innerHTML + quantite*data3.price
             })
         }
 }
 
-function supprimePanier(id){
+function commandePanier (){
+    let tableauPanier = [];
+    for (let i = 0; i < localStorage.length; i++) {  
+        let _id = localStorage.key(i);
+        let quantite = localStorage[_id];
+        let produitPanier = {id:_id, quantite:quantite};
+        tableauPanier.push(produitPanier);
+        }
+    return tableauPanier
+}
+
+function suppressionPanier(id){
     localStorage.removeItem(id);
     window.location.reload();
     
 }
 
-fetch()
+let com = commandePanier();
+console.log(com);
+
+
+function validationCommande() {
+    let form = document.getElementById("form");
+    let regExEmail = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'); 
+    let regExPrenomNomCity = new RegExp ('^[A-Za-z\é\è\É\È]\'?[- A-Za-z\é\è\ê\î\ï\ô\ö]+$', 'i');
+    let validPrenom = regExPrenomNomCity.test(form.firstname.value);
+    console.log(validPrenom);
+    let validEmail = regExEmail.test(form.email.value);
+    console.log(validEmail);
+    let validCity =  regExPrenomNomCity.test(form.city.value);
+    console.log(validCity);
+    let validNom = regExPrenomNomCity.test(form.lastname.value);
+    console.log(validNom);
+
+    if(validEmail == true && validPrenom == true && validNom == true && validCity == true){
+        let infoCommande = {
+            firstname: document.getElementById("firstname").value,
+            lastname: document.getElementById("lastname").value,
+            adress: document.getElementById("adress").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value,
+            product_id: commandePanier()
+        }
+        console.log(infoCommande);
+    }else{
+        window.alert("Le formulaire est mal rempli");
+    }
+
+
+
+    
+
+}
+
+
 
 
 
