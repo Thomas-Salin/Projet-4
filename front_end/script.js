@@ -24,6 +24,7 @@ function affichageProduit (){
 function affichageDetailProduit(){
     let url = window.location.href;
     let tId = url.split("?");
+    console.log(tId);
     let id = tId[1];
     fetch(`http://localhost:3000/api/teddies/${id}`)
         .then(response => response.json())
@@ -74,13 +75,19 @@ function affichagePanier(){
 }
 
 function commandePanier (){
-    let tableauPanier = [];
+    let tableauPanier = []
     for (let i = 0; i < localStorage.length; i++) {  
         let _id = localStorage.key(i);
-        let quantite = localStorage[_id];
-        let produitPanier = {id:_id, quantite:quantite};
-        tableauPanier.push(produitPanier);
+        let id =_id + "/";
+        let quantite = parseInt(localStorage[_id]);
+        let produitIds = id.repeat(quantite);
+        let arrayProduitId = produitIds.split("/");
+        const supp = arrayProduitId.pop();
+        for (const idProduit of arrayProduitId) {
+            tableauPanier.push(idProduit);
+            
         }
+    }    
     return tableauPanier
 }
 
@@ -90,11 +97,10 @@ function suppressionPanier(id){
     
 }
 
-let com = commandePanier();
-console.log(com);
 
 
-function validationCommande() {
+function validationCommande(){ 
+
     let form = document.getElementById("form");
     let regExEmail = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'); 
     let regExPrenomNomCity = new RegExp ('^[A-Za-z\é\è\É\È]\'?[- A-Za-z\é\è\ê\î\ï\ô\ö]+$', 'i');
@@ -106,27 +112,27 @@ function validationCommande() {
     console.log(validCity);
     let validNom = regExPrenomNomCity.test(form.lastname.value);
     console.log(validNom);
-
-    if(validEmail == true && validPrenom == true && validNom == true && validCity == true){
-        let infoCommande = {
-            firstname: document.getElementById("firstname").value,
-            lastname: document.getElementById("lastname").value,
-            adress: document.getElementById("adress").value,
+    let produitPanier = commandePanier();
+    console.log(produitPanier);
+    let client = {
+        contact: {
+            firstName: document.getElementById("firstname").value,
+            lastName: document.getElementById("lastname").value,
+            address: document.getElementById("adress").value,
             city: document.getElementById("city").value,
             email: document.getElementById("email").value,
-            product_id: commandePanier()
-        }
-        console.log(infoCommande);
-    }else{
-        window.alert("Le formulaire est mal rempli");
+        },
+        products: produitPanier  
     }
-
-
-
     
-
+    fetch('http://localhost:3000/api/teddies/order', {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(client)   
+    })
 }
-
 
 
 
