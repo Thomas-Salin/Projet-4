@@ -18,12 +18,8 @@ strong.ref{
     text-decoration: underline;
 }
 
-div.misepage{
-    padding : 10%;
-}
 
-
-input:invalid:hover{
+input:invalid:focus{
     border: 1px solid red;
 }
 
@@ -31,4 +27,16 @@ input:valid:focus{
     border: 1px solid green;
 }
 
+label{
+    font-weight: bolder;
+}
+
+main.position{
+    position : relative;
+}
+
+footer.positionfooter{
+    position : fixed;
+    bottom :0;
+}
 

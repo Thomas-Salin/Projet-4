@@ -76,44 +76,44 @@
 
     <section class="container-fluid">
 
-        <div class="row my-5">
-            <div class="col">
+        <div class="row mb-5">
+            <div class="col text-center mb-5 pb-5">
 
-                <form class="w-75 mx-auto" id="form">
+                <form class="w-75 mx-auto pb-5" id="form">
 
                     <div class="row">
                         <div class="form-group col-6">
-                            <label for="firstname">Prénom</label>
+                            <label for="firstname">Prénom*</label>
                             <input class="form-control shadow-none" id="firstname" name="firstname" type="text"required />
                         </div>
                         <div class="form-group col-6">
-                            <label for="lastname">Nom</label>
+                            <label for="lastname">Nom*</label>
                             <input class="form-control shadow-none" type="text" id="lastname" name="lastname" required />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="adress">Adresse</label>
-                        <input type="text" class="form-control shadow-none" id="adress" name="adress" required />
+                        <label for="address">Adresse*</label>
+                        <input type="text" class="form-control shadow-none" id="address" name="address" required />
                     </div>
 
                     <div class="row">
                         <div class="form-group col-6">
-                            <label for="city">Ville</label>
+                            <label for="city">Ville*</label>
                             <input type="text" class="form-control shadow-none" id="city" name="city" required />
                         </div>
                         <div class="form-group col-6">
-                            <label for="email">Email</label>
+                            <label for="email">Email*</label>
                             <input type="email" class="form-control shadow-none" name="email" id="email" required/>
                         </div>
-                    </div><br>
+                    </div><br><br>
 
-                    <p>Tous les champs sont obligatoires</p>
+                    <p>*Tous les champs sont obligatoires</p>
 
 
                 </form>
 
-                <button type="submit" onclick="validationCommande()">Valider la commande</button>
+                <button type="submit" onclick="validationCommande()" id="boutonValidation">Valider la commande</button>
 
             </div>
         </div>

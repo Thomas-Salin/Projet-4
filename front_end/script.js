@@ -23,8 +23,8 @@ function affichageProduit (){
 
 function affichageDetailProduit(){
     let url = window.location.href;
+    console.log(url);
     let tId = url.split("?");
-    console.log(tId);
     let id = tId[1];
     fetch(`http://localhost:3000/api/teddies/${id}`)
         .then(response => response.json())
@@ -101,9 +101,16 @@ function suppressionPanier(id){
 
 function validationCommande(){ 
 
+    let produitPanier = commandePanier();
     let form = document.getElementById("form");
     let regExEmail = new RegExp ('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'); 
+    let regExAddress = new RegExp ('([0-9]*) ?([a-zA-Z,\. ])$');
     let regExPrenomNomCity = new RegExp ('^[A-Za-z\é\è\É\È]\'?[- A-Za-z\é\è\ê\î\ï\ô\ö]+$', 'i');
+    let regExPanier = new RegExp ('[a-z0-9,]')
+    let validAddress = regExAddress.test(form.address.value)
+    console.log(validAddress);
+    let validPanier = regExPanier.test(produitPanier);
+    console.log(validPanier);
     let validPrenom = regExPrenomNomCity.test(form.firstname.value);
     console.log(validPrenom);
     let validEmail = regExEmail.test(form.email.value);
@@ -112,35 +119,39 @@ function validationCommande(){
     console.log(validCity);
     let validNom = regExPrenomNomCity.test(form.lastname.value);
     console.log(validNom);
-    let produitPanier = commandePanier();
-    console.log(produitPanier);
-    let client = {
-        contact: {
-            firstName: document.getElementById("firstname").value,
-            lastName: document.getElementById("lastname").value,
-            address: document.getElementById("adress").value,
-            city: document.getElementById("city").value,
-            email: document.getElementById("email").value,
-        },
-        products: produitPanier  
-    }
+    if(validEmail == true && validPrenom == true && validNom == true && validCity == true && validPanier == true && validAddress == true){
+        let client = {
+            contact: {
+                firstName: document.getElementById("firstname").value,
+                lastName: document.getElementById("lastname").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                email: document.getElementById("email").value,
+            },
+            products: produitPanier  
+        }
     
-    fetch('http://localhost:3000/api/teddies/order', {
+        fetch('http://localhost:3000/api/teddies/order', {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify(client)   
-    })
+        })
+        .then(response4 => response4.json())
+        .then(data4 => {
+            let idCommande = data4.orderId;
+            window.location.href = `confirmation.html?${idCommande}`;
+        })
+    }else {
+        alert("Veuillez remplir tous les champs avec les informations demandées.");
+    }
 }
 
-
-
-
-
-
-
-
-    
-
-    
+function affichageConfirmationCommande (){
+    let urlConfirmation = window.location.href;
+    let tIdConfirmation = urlConfirmation.split("?");
+    let idConfirmation = tIdConfirmation[1];
+    document.getElementById("idCommandeClient").innerHTML += `
+    <strong class="idCommandeClient">${idConfirmation}</strong>`
+}
