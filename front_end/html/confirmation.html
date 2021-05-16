@@ -11,51 +11,59 @@
 </head>
 
 <body onload="affichageConfirmationCommande()">
+
     <main class="position">
 
     <header class="container-fluid">
+
         <div class="row bg-warning">
             <nav class="col navbar bg-warning navbar-expand-md navbar-light">
                 <a href="../index.html" class="nav-brand w-75"><img class="px-3" src="../images/logo.png" alt="logo_orinoco" height="80" ></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse bg-warning" id="navbarContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a href="../index.html" class="nav-link text-dark px-5">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./panier.html" class="nav-link text-dark px-5">Panier</a>
-                        </li>
-                    </ul>
-                </div>    
-            </nav>
-        </div>      
+                    </button>
+                    <div class="navbar-collapse collapse bg-warning" id="navbarContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a href="../index.html" class="nav-link text-dark px-5">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./panier.html" class="nav-link text-dark px-5">Panier</a>
+                            </li>
+                        </ul>
+                    </div>    
+                </nav>
+            </div>
+
     </header>
 
     <section class="container-fluid my-5 py-5">
+
         <div class="row text-center positionfooter">
             <div class="col-12 mx-auto">
-                <p class="text-success display-6"><b>Merci</b><br>Votre commande n° <strong id="idCommandeClient"></strong> a été prise en compte<br>Vous allez recevoir un mail de confirmation d'ici quelques instants.</p>
+                <p class="text-success display-6"><b>Merci</b><br>Votre commande n° <strong id="idCommandeClient"><!--numéro de commande généré par la fonction affichageConfirmationCommande--> </strong> a été prise en compte<br>Vous allez recevoir un mail de confirmation d'ici quelques instants.</p>
                 <a class="text-dark" href="../index.html">Revenir à l'accueil</a>
             </div>
         </div>
+
     </section>
 
     <footer class="container-fluid positionfooter">
+
         <div class="row bg-warning py-5">
             <div class="col bg-warning">
                 <a href="./index.html" class="nav-brand w-75"><img class="px-3" src="../images/logo.png" alt="logo_orinoco" height="60" ></a>
             </div>
             <div class="col text-end align-self-center">
-                <ul class="list-inline"></ul>
-                    <li class="list-inline-item px-5"><a class="text-dark" href="#">Contact</a></li>
-                    <li class="list-inline-item px-5"><a class="text-dark" href="#">Conditions Générales</a></li>
+                <ul class="list-inline">
+                    <li class="list-inline-item px-3"><a class="text-dark" href="#">Contact</a></li>
+                    <li class="list-inline-item px-3"><a class="text-dark" href="#">Conditions Générales</a></li>
                 </ul>
             </div>
         </div>
+
     </footer>
+
     </main>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
